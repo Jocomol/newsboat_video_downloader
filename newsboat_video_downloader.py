@@ -13,7 +13,7 @@ def make_sure_path_exists(path):
             raise
 
 
-con = sqlite3.connect(os.environ['HOME'] + '/.newsboat/cache.db')
+con = sqlite3.connect(f'{os.environ['HOME']}/.newsboat/cache.db')
 cur = con.cursor()
 
 make_sure_path_exists('./Youtube/')
@@ -22,8 +22,8 @@ for row in cur.execute('select url, author from rss_item WHERE "unread"=1 and "u
     url = row[0]
     author = row[1]
     folder = author.replace(" ", "_").lower()
-    make_sure_path_exists('./Youtube/' + folder)
-    os.system("youtube-dl -o \"./Youtube/" + folder + "/%(title)s.%(ext)s\" " + url)
+    make_sure_path_exists(f'./Youtube/{folder}')
+    os.system(f'youtube-dl -o "./Youtube/{folder}/%(title)s.%(ext)s" {url}')
 
 cur.execute('update rss_item set "unread" = 0 WHERE "unread"=1 and "url" like "%youtube%";')
 con.commit()
