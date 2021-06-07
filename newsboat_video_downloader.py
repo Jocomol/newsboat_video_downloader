@@ -13,7 +13,7 @@ def make_sure_path_exists(path):
             raise
 
 
-con = sqlite3.connect(f'{os.environ['HOME']}/.newsboat/cache.db')
+con = sqlite3.connect(f"{os.environ['HOME']}/.newsboat/cache.db")
 cur = con.cursor()
 
 make_sure_path_exists('./Youtube/')
