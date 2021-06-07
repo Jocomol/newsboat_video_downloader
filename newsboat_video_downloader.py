@@ -22,7 +22,7 @@ for row in cur.execute('select url, author from rss_item WHERE "unread"=1 and "u
     url, author = row
     folder = author.replace(" ", "_").lower()
     make_sure_path_exists(f'./Youtube/{folder}')
-    os.system(f'youtube-dl -o "./Youtube/{folder}/%(title)s.%(ext)s" {url}')
+    os.system(f'youtube-dl --restrict-filenames -o "./Youtube/{folder}/%(title)s-%(id)s.%(ext)s" {url}')
 
 cur.execute('update rss_item set "unread" = 0 WHERE "unread"=1 and "url" like "%youtube%";')
 con.commit()
