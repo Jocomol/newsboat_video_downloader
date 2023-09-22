@@ -65,6 +65,7 @@ if $m_flag; then
     newsboat -x reload
 fi
 
+# Detox:
 if $d_flag; then
     detox -r $VIDEOFOLDER/*
 fi

@@ -38,3 +38,27 @@ optional arguments:
   -m,                      Enabled the marking mode which will mark the videos as watched in newsboat
   -d,                      Enables the detox mode and will execute detox in the video directory after downloading
 ```
+
+## Personal preferences
+I've implemented a few personal preferences directly as I don't expect many people to use this script.
+
+### File locations
+See chapter `Configure`.
+
+### yt-dlp
+I've configured yt-dlp to download the videos as mp4 and embed the thumbnails if you dont want that just change.
+```
+# newsboat_video_downloader.sh
+59: yt-dlp --format mp4 --embed-thumbnail -o "$VIDEOFOLDER/%(uploader)s/%(title)s.%(ext)s" -a /tmp/videolist
+```
+to:
+```
+# newsboat_video_downloader.sh
+59: yt-dlp -o "$VIDEOFOLDER/%(uploader)s/%(title)s.%(ext)s" -a /tmp/videolist
+```
+
+### detox
+I like my files neat and tidy with reasonable names. I use `detox` for that. Using the `-d` flag activates `detox` after ddownloading all the videos.
+
+### update
+`-m` marks all downloaded videos as read in newsboat. Personally I've disabled that as I use newsboat as a client for miniflux which doesn't care about changes made to cache.db
