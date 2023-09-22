@@ -1,3 +1,3 @@
 #!/bin/bash
 git pull
-cp newsboat_video_downloader.py ~/.local/bin/newsboat_video_downloader 
+cp newsboat_video_downloader.sh ~/.local/bin/newsboat_video_downloader
